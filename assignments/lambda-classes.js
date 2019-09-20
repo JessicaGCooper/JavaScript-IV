@@ -31,11 +31,11 @@ class Instructor extends Person {
     changeGrade (studentObject){
         let newGrade = 0;
         if (Math.random() <= 0.5){
-           newGrade = (studentObject.currentGrade - (Math.floor(Math.random() * 100)));
+           newGrade = (studentObject.currentGrade - (Math.floor(Math.random() * 10)));
         } else if (Math.random() > 0.5){
-           newGrade = (studentObject.currentGrade + (Math.floor(Math.random() * 100)));
+           newGrade = (studentObject.currentGrade + (Math.floor(Math.random() * 10)));
             }
-        console.log(`${studentObject.name} now has a grade of ${newGrade}`);
+        console.log(`${studentObject.name} now has a grade of ${newGrade}.`);
         }
 }//ends Instructor
 
@@ -192,3 +192,4 @@ instructor2.changeGrade(student2);
 instructor2.changeGrade(student2);
 instructor2.changeGrade(student1);
 instructor2.changeGrade(student1);
+projectManager2.changeGrade(student2);
