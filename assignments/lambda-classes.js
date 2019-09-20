@@ -27,6 +27,16 @@ class Instructor extends Person {
     grade (student, subject){
         console.log(`${student} receives a perfect score on ${subject}.`);
     }//ends grade
+
+    changeGrade (studentObject){
+        let newGrade = 0;
+        if (Math.random() <= 0.5){
+           newGrade = (studentObject.currentGrade - (Math.floor(Math.random() * 100)));
+        } else if (Math.random() > 0.5){
+           newGrade = (studentObject.currentGrade + (Math.floor(Math.random() * 100)));
+            }
+        console.log(`${studentObject.name} now has a grade of ${newGrade}`);
+        }
 }//ends Instructor
 
 class Student extends Instructor {
@@ -34,7 +44,8 @@ class Student extends Instructor {
         super(studentAttributes),
         this.previousBackground = studentAttributes.previousBackground,
         this.className = studentAttributes.className,
-        this.favSubjects = studentAttributes.favSubjects
+        this.favSubjects = studentAttributes.favSubjects,
+        this.currentGrade = studentAttributes.currentGrade
     }//ends studentAttributes
 
     listsSubjects (){
@@ -63,8 +74,8 @@ class ProjectManager extends Student {
         console.log(`${this.name} announces to ${channel}, @channel standy times!`);
     }//ends standup
 
-    debugsCode (subject){
-        console.log(`${this.name} debugs ${student1.name}'s code on ${subject}`);
+    debugsCode (studentObject, subject){
+        console.log(`${this.name} debugs ${studentObject.name}'s code on ${subject}.`);
     }//ends debugsCode
 }//ends Instructor
 
@@ -96,7 +107,8 @@ const student1 = new Student({
     catchPhrase: 'Always just beginning.',
     previousBackground: 'Math Teacher',
     className: 'PTWEB2',
-    favSubjects: ['HTML', 'CSS', 'PHP', 'JavaScript']
+    favSubjects: ['HTML', 'CSS', 'PHP', 'JavaScript'],
+    currentGrade: 99
 });
 
 const student2 = new Student({
@@ -108,7 +120,8 @@ const student2 = new Student({
     catchPhrase: 'I am ROCK steady.',
     previousBackground: 'Mountain Climbing Instructor',
     className: 'WEBFT12',
-    favSubjects: ['Ruby', 'PHP', 'Java', '.NET', 'Python']
+    favSubjects: ['Ruby', 'PHP', 'Java', '.NET', 'Python'],
+    currentGrade: 72
 });
 
 const projectManager1 = new ProjectManager({
@@ -169,7 +182,13 @@ projectManager1.PRAssignment('LOVE');
 
 projectManager1.standup('WEB24 Help');
 projectManager2.standup('Random');
-projectManager1.debugsCode();
-projectManager2.debugsCode();
+projectManager1.debugsCode(student1, 'HTML');
+projectManager2.debugsCode(student2, 'JavaScript');
 
+console.log(student2.currentGrade);
+console.log(student1.currentGrade);
 
+instructor2.changeGrade(student2);
+instructor2.changeGrade(student2);
+instructor2.changeGrade(student1);
+instructor2.changeGrade(student1);
